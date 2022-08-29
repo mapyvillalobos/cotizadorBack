@@ -33,6 +33,11 @@ const quoteSchema = new Schema(
       type: Number,
       require: true,
     },
+    status: {
+      type: String,
+      enum: ["Cotizado", "Cancelado", "Adelanto", "Pagado", "Confirmado"],
+      default: "Cotizado",
+    },
     _Entity: {
       type: Schema.Types.ObjectId,
       ref: "Entity",

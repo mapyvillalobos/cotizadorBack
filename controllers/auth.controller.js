@@ -7,8 +7,8 @@ const { use } = require("../routes/auth.routes");
 
 exports.signupProcess = (req, res, next) => {
 
-  const { role, email, password, confirmPassword, ...restUser } = req.body;
-  if (!email.length || !password.length || !confirmPassword.length)
+  const { role, email, password, ...restUser } = req.body;
+  if (!email.length || !password.length)
     return res
       .status(400)
       .json({ errorMessage: "Llena todos los campos obligatorios" });
@@ -17,6 +17,15 @@ exports.signupProcess = (req, res, next) => {
   //   return res
   //     .status(400)
   //     .json({ errorMessage: "Las contraseñas deben coincidir" });
+
+  const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
+  if (!regex.test(password))
+    return res
+      .status(400)
+      .json({
+        errorMessage:
+          "La contraseña debe tener 8 caracteres y al menos una minúscula, una mayúscula y un número",
+      });
 
   //Validar si el email existe antes
   User.findOne({ email })
@@ -51,7 +60,7 @@ exports.signupProcess = (req, res, next) => {
               sameSite: "strict",
               secure: false,
             });
-            
+
             const newUser = clearRes(user.toObject());
             res.status(201).json({ user: newUser });
           })
