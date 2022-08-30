@@ -48,6 +48,20 @@ const quoteSchema = new Schema(
       ref: "User",
       require: true,
     },
+    _products: [
+      {
+        product: {
+          type: Schema.Types.ObjectId,
+          ref: "Catalogue",
+          require: true,
+        },
+        quantity: Number,
+        totalCost: Number,
+      },
+    ],
+    subtotal: Number,
+    totalOrder: Number,
+    IVA: Number,
   },
   {
     timestamps: true,

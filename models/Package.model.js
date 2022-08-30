@@ -18,11 +18,17 @@ const packageSchema = new Schema(
       type: String,
       require: true,
     },
-    _Product: {
+    _products:[
+      {
+        product:{
       type: Schema.Types.ObjectId,
       ref: "Catalogue",
       require: true,
     },
+    quantity: Number,
+    totalCost: Number,
+    },
+    ],
     ImageURL: {
       type: String,
       default:
