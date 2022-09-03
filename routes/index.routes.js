@@ -1,6 +1,8 @@
 const router = require("express").Router();
 const authRoutes = require("./auth.routes");
 const uploadRoutes = require("./upload.routes");
+const userRoutes = require("./user.routes");
+const entityRoutes = require("./entity.routes");
 
 router.get("/", (req, res, next) => {
   res.json("All good in here");
@@ -8,5 +10,7 @@ router.get("/", (req, res, next) => {
 
 router.use("/auth", authRoutes);
 router.use("/upload", uploadRoutes);
+router.use("/user", userRoutes);
+router.use("/entity", entityRoutes);
 
 module.exports = router;

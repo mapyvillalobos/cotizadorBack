@@ -21,9 +21,11 @@ const userSchema = new Schema(
     firstName: {
       type: String,
       minlength: 1,
+      require: true,
     },
     lastName: {
       type: String,
+      minlength: 1,
       require: true,
     },
     imageURL: {

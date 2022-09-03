@@ -5,8 +5,9 @@ const {
   loginProcess,
   logoutProcess,
 } = require("../controllers/auth.controller");
+const { verifyToken, checkRole } = require("../middleware");
 
-router.post("/signup", signupProcess);
+router.post("/signup", verifyToken, checkRole(["Admin"]), signupProcess);
 router.post("/login", loginProcess);
 router.get("/logout", logoutProcess);
 
