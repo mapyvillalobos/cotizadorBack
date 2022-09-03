@@ -1,17 +1,16 @@
 const router = require("express").Router();
 
 const {
-  uploadProcess,
-  deleteImage,
-} = require("../controllers/upload.controller");
+  createEntity,
+  updateEntity,
+  getAllEntities
+} = require("../controllers/entity.controller");
 
-const uploadCloud = require("../helpers/cloudinary");
 const { verifyToken, checkRole } = require("../middleware");
 
-//multiples
-//router.post("/uploads", uploadCloud.array("images", 3), uploadProcess);
+router.post("/create", verifyToken, checkRole(["Admin"]), createEntity);
+router.patch("/:id/update", verifyToken, checkRole(["Admin"]), updateEntity);
+router.get("/all", getAllEntities);
 
-router.post("/single", uploadCloud.single("image"), uploadProcess);
-router.delete("/delete-image/:name", verifyToken, deleteImage);
 
 module.exports = router;
