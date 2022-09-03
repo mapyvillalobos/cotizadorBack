@@ -5,7 +5,7 @@ const packageSchema = new Schema(
     packageName: {
       type: String,
       require: true,
-      unique: true,
+      unique: [true, "el lpaquete debe tener un nombre"]
     },
     packageShortDescription: {
       type: String,
