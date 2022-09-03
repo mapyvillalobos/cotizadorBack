@@ -60,6 +60,8 @@ exports.deleteImage = (req, res, next) => {
         .json({ errorMessage: "No se pudo eliminar", error });
     }
 
-    res.status(200).json({ successMessage: `se elimino el archivo ${name}` });
+    res
+      .status(200)
+      .json({ successMessage: ` ${name} se eliminó` });
   });
 };

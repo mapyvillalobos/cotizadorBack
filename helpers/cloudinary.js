@@ -15,7 +15,7 @@ const storage = new CloudinaryStorage({
       folder: "EventQuote",
       allowedFormats: ["png", "jpg", "jpeg", "svg", "webp", "gif", "pdf"],
       fileFilter: (req, file, cb) => {
-        if (!file.originalname.match(/\.(svg | gif | doc)$/)) {
+        if (!file.originalname.match(/\.(svg | gif | doc )$/)) {
           return cb(new Error("Extensión de archivo no válido"));
         }
         cb(null, file.originalname);

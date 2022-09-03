@@ -6,7 +6,7 @@ const {
 } = require("../controllers/upload.controller");
 
 const uploadCloud = require("../helpers/cloudinary");
-const { verifyToken, checkRole } = require("../middleware");
+const { verifyToken } = require("../middleware");
 
 //multiples
 //router.post("/uploads", uploadCloud.array("images", 3), uploadProcess);
