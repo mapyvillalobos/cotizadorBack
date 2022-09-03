@@ -14,21 +14,18 @@ exports.uploadProcess = async (req, res, next) => {
             folder,
           }
         );
-      }); //end clodinary
-    }); //end new promise
-  }; //end uploads
-  //es la llave del json donde va a contener la imagen
+      }); 
+    }); 
+  }; 
+
   const uploader = async (path) => uploads(path, "images");
 
   if (req.method === "POST") {
     const urls = [];
     const files = req.files;
-    //req.files middelware.array()
-    //req.file .single()
+  
     if (!req.file) {
-      // si no existe
       for (const file of files) {
-        //for of array string  -- for in Objectws
         const { path } = file;
         const newPath = await uploader(path);
         urls.push({
@@ -56,8 +53,7 @@ exports.uploadProcess = async (req, res, next) => {
 
 exports.deleteImage = (req, res, next) => {
   const { name } = req.params;
-  //folder/nameImage.ext
-  cloudinary.v2.uploader.destroy(`tinder-perritos/${name}`, (error, result) => {
+  cloudinary.v2.uploader.destroy(`EventQuote/${name}`, (error, result) => {
     if (error) {
       return res
         .status(400)
