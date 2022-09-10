@@ -20,13 +20,9 @@ const packageSchema = new Schema(
     },
     _products:[
       {
-        product:{
       type: Schema.Types.ObjectId,
       ref: "Catalogue",
       require: true,
-    },
-    quantity: Number,
-    totalCost: Number,
     },
     ],
     ImageURL: {

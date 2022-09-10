@@ -14,7 +14,7 @@ const { verifyToken, checkRole } = require("../middleware");
 router.post("/create", createQuote);
 router.patch("/:id/update", updateQuote);
 router.patch(
-  "/:id/updateStatus",
+  "/:id/update-status",
   verifyToken,
   checkRole(["Admin"]),
   updateStatusQuote
