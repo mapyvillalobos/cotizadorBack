@@ -5,7 +5,6 @@ const quoteSchema = new Schema(
     clientName: {
       type: String,
       require: true,
-      unique: true,
     },
     email: {
       type: String,
@@ -19,6 +18,10 @@ const quoteSchema = new Schema(
     },
     eventDate: {
       type: Date,
+    },
+    date:{
+      type: String,
+      require: true,
     },
     clientRFC: {
       type: String,

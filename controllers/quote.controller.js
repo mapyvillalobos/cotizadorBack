@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 exports.createQuote = async (req, res, next) => {
   const { ...restQuote } = req.body;
   try {
-    const quote = await Quote.create({ ...restQuote });
+    const quote = await Quote.create({ ...restQuote, _Owner:req.user._id });
     const newQuote = clearRes(quote.toObject());
     res.status(201).json({ quote: newQuote });
   } catch (error) {
@@ -73,11 +73,16 @@ exports.updateStatusQuote = async (req, res, next) => {
 
 exports.getAllQuotes = async (req, res, next) => {
   try {
-    const quotes = await Quote.find(null, {
-      __v: 0,
-      createdAt: 0,
-      updatedAt: 0,
-    });
+    const quotes = await Quote.find(
+      {},
+      {
+        __v: 0,
+        createdAt: 0,
+        updatedAt: 0,
+      }
+    )
+      .populate("_Owner")
+      .populate("_Entity");
     res.status(201).json({ quotes });
   } catch (error) {
     if (error instanceof mongoose.Error.ValidationError)
