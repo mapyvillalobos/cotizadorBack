@@ -33,13 +33,13 @@ const userSchema = new Schema(
       default:
         "https://res.cloudinary.com/dvgmi864m/image/upload/v1661615898/profile_m9gd78.png",
     },
-      _entities:[
-      {
-      type: Schema.Types.ObjectId,
-      ref: "Entity",
-      require: true,
-    }
-  ],
+    //   _entities:[
+    //   {
+    //   type: Schema.Types.ObjectId,
+    //   ref: "Entity",
+    //   require: true,
+    // }
+  //],
   },
   {
     timestamps: true,

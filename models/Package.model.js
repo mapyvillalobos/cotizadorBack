@@ -5,7 +5,7 @@ const packageSchema = new Schema(
     packageName: {
       type: String,
       require: true,
-      unique: [true, "el lpaquete debe tener un nombre"]
+      unique: [true, "el lpaquete debe tener un nombre"],
     },
     packageShortDescription: {
       type: String,
@@ -18,12 +18,12 @@ const packageSchema = new Schema(
       type: String,
       require: true,
     },
-    _products:[
+    _products: [
       {
-      type: Schema.Types.ObjectId,
-      ref: "Catalogue",
-      require: true,
-    },
+        type: Schema.Types.ObjectId,
+        ref: "Catalogue",
+        require: true,
+      },
     ],
     ImageURL: {
       type: String,
