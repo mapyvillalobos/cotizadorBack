@@ -82,7 +82,7 @@ exports.getAllQuotes = async (req, res, next) => {
       }
     )
       .populate("_Owner")
-      .populate("_Entity");
+      .populate("_products");
     res.status(201).json({ quotes });
   } catch (error) {
     if (error instanceof mongoose.Error.ValidationError)

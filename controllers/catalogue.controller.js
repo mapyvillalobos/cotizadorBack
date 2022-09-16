@@ -46,11 +46,11 @@ exports.updateCatalogue = async (req, res, next) => {
 
 exports.getAllCatalogues = async (req, res, next) => {
   try {
-    const catalogues = await Catalogue.find(null, {
+    const catalogues = await Catalogue.find({}, {
       __v: 0,
       createdAt: 0,
       updatedAt: 0,
-    });
+    })
     res.status(201).json({ catalogues });
   } catch (error) {
     if (error instanceof mongoose.Error.ValidationError)

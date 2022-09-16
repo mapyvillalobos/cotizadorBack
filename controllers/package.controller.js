@@ -51,7 +51,7 @@ exports.getAllPackages = async (req, res, next) => {
       __v: 0,
       createdAt: 0,
       updatedAt: 0,
-    });
+    }).populate("_products");
     res.status(201).json({ packages });
   } catch (error) {
     if (error instanceof mongoose.Error.ValidationError)

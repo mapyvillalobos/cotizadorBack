@@ -52,15 +52,11 @@ const quoteSchema = new Schema(
       require: true,
     },
     _products: [
-      {
-        product: {
+        {
           type: Schema.Types.ObjectId,
           ref: "Catalogue",
           require: true,
         },
-        quantity: Number,
-        totalCost: Number,
-      },
     ],
     subtotal: Number,
     totalOrder: Number,
