@@ -17,7 +17,7 @@ const quoteSchema = new Schema(
       require: true,
     },
     eventDate: {
-      type: Date,
+      type: String,
     },
     date:{
       type: String,
