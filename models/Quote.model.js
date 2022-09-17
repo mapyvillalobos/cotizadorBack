@@ -33,7 +33,7 @@ const quoteSchema = new Schema(
       type: Number,
     },
     clientPhone: {
-      type: Number,
+      type: String,
       require: true,
     },
     status: {

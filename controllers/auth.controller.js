@@ -87,7 +87,6 @@ exports.loginProcess = (req, res, next) => {
       .status(400)
       .json({ errorMessage: "Llena todos los campos obligatorios" });
 
-  //validar el password > 8 o colocar el regex
 
   User.findOne({ email })
     .then((user) => {
@@ -97,14 +96,12 @@ exports.loginProcess = (req, res, next) => {
           .status(400)
           .json({ errorMessage: "Correo y/o contraseña inválidas" });
 
-      //ver si la contraseña es correcta
       return bcryptjs.compare(password, user.password).then((match) => {
         if (!match)
           return res
             .status(400)
             .json({ errorMessage: "Correo y/o contraseña inválidas" });
 
-        //crear nuestro jwt
         const [header, payload, signature] = createJWT(user);
 
         res.cookie("headload", `${header}.${payload}`, {
@@ -144,6 +141,6 @@ exports.logoutProcess = (req, res, next) => {
   res
     .status(200)
     .json({
-      successMessage: "Sesión cerró correctamente. Te esperamos pronto!",
+      successMessage: "La sesión cerró correctamente. ¡Te esperamos pronto!",
     });
 };
